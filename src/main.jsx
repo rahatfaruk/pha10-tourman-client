@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import './index.css'
 import 'animate.css'
+// context
+import AuthProvider from './context/AuthProvider'
 // comps & pages
 import App from './App.jsx'
 import ErrorPage from './pages/ErrorPage'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
-// context
-import AuthProvider from './context/AuthProvider'
+import Home from './pages/Home'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,11 @@ const router = createBrowserRouter(
     >
       <Route path='signin' element={<Signin/>} />
       <Route path='signup' element={<Signup/>} />
+      <Route 
+        index 
+        element={<Home/>} 
+        loader={() => fetch('/touristSpots.json')} 
+      />
     </Route>
   )
 )

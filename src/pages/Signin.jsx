@@ -64,7 +64,7 @@ function Signin() {
     <section className="px-4 md:px-6 py-8">
       <div className="max-w-md mx-auto p-4 border rounded-md shadow-md animate__animated animate__fadeIn">
         <Helmet>
-          <title>SweetHome | Signin</title>
+          <title>TourMan | Register</title>
         </Helmet>
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6 animate__animated animate__shakeX">Sign in</h2>
 
