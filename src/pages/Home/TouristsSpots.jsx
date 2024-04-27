@@ -6,7 +6,7 @@ function TouristsSpots({touristSpots}) {
   return (  
     <section className="px-4">
       <div className="max-w-screen-xl mx-auto py-6">
-        <h2 className="mb-4 md:mb-6 text-3xl md:text-4xl text-center font-semibold animate__animated animate__fadeInDown">Tourists Spots</h2>
+        <h2 className="mb-4 md:mb-6 text-3xl md:text-4xl text-center font-semibold">Tourists Spots</h2>
 
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {touristSpots.map(spot => <Spot key={spot._id} spot={spot} />)}
