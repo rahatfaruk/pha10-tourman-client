@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Home from './pages/Home'
+import AddTouristsSpot from './pages/AddTouristsSpot.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
         index 
         element={<Home/>} 
         loader={() => fetch('/touristSpots.json')} 
+      />
+      <Route 
+        path='add-tourists-spot'
+        element={ <AddTouristsSpot /> }
       />
     </Route>
   )

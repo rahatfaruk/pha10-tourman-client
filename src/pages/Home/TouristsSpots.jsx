@@ -31,7 +31,7 @@ function Spot({spot}) {
         <p className='text-gray-600 text-sm mb-1'>Cost: {averageCost}</p>
         <p className='text-gray-600 text-sm mb-1'>Time: {travelTime}</p>
         <p className='text-gray-600 text-sm mb-1'>Added by <span className='font-bold'>{userName}</span></p>
-        <Link to={`/spot-details/${_id}`} className="inline-block px-3 py-1 mt-3 rounded-md text-white bg-green-600 hover:opacity-90">View Details</Link>
+        <Link to={`/spot-details/${_id}`} className="inline-block px-3 py-1 mt-3 rounded-md text-white bg-purple-600 hover:opacity-90">View Details</Link>
       </div>
     </div>
   );
