@@ -14,7 +14,7 @@ function AddTouristsSpot() {
     const email = form.email.value
     const username = form.username.value
 
-    const newSpot = { image, spot, country, location, description, cost, seasonality, time, visitors, email, username }
+    const newSpot = { image, touristsSpotName:spot, countryName:country, location, shortDescription:description, averageCost:cost, seasonality, travelTime:time, totalVisitorsPerYear:visitors, userEmail:email, userName:username }
 
     // >> Todo: post to DB
     console.log(newSpot);
