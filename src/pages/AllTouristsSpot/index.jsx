@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import TouristsSpotsGrid from "./TouristsSpotsGrid";
+import TouristsSpotsGrid from "../../comps/TouristsSpotsGrid";
 import { useState } from "react";
 
 function AllTouristsSpot() {

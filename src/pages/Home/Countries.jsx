@@ -31,7 +31,7 @@ function Country({ country }) {
   return (
     <div className="relative border shadow-sm rounded-xl">
       <img className="w-full h-64 rounded-xl object-cover object-bottom" src={image} alt={countryName} />
-      <Link to={''} className="absolute top-0 bottom-0 start-0 end-0 flex flex-col justify-center items-center py-4 px-6 text-center text-white bg-[rgba(0,0,0,.55)] rounded-xl hover:cursor-pointer">
+      <Link to={`/tourist-spots/${countryName}`} className="absolute top-0 bottom-0 start-0 end-0 flex flex-col justify-center items-center py-4 px-6 text-center text-white bg-[rgba(0,0,0,.55)] rounded-xl hover:cursor-pointer">
         <h3 className="mb-2 text-2xl font-bold">{countryName}</h3>
         <p>{description}</p>
       </Link>

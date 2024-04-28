@@ -17,6 +17,7 @@ import SpotDetails from './pages/SpotDetails/index.jsx'
 import AllTouristsSpot from './pages/AllTouristsSpot/index.jsx'
 import MyList from './pages/MyList/index.jsx'
 import UpdateTouristSpot from './pages/UpdateTouristSpot.jsx'
+import CountryTouristSpots from './pages/CountryTouristSpots.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -53,6 +54,11 @@ const router = createBrowserRouter(
       <Route 
         path='update-tourist-spot/:id'
         element={ <UpdateTouristSpot/> }
+      />
+      <Route 
+        path='tourist-spots/:countryName'
+        element={ <CountryTouristSpots/> }
+        loader={() => fetch('/touristSpots.json')} 
       />
     </Route>
   )
