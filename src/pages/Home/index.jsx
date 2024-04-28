@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import {useLoaderData} from 'react-router-dom';
-import {Helmet} from 'react-helmet';
 import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../comps/Loading';
 import Banner from "./Banner";
@@ -19,9 +18,6 @@ function Home() {
   }
   return (  
     <div>
-      <Helmet>
-        <title>TourMan | Home</title>
-      </Helmet>
       <Banner touristSpots={touristSpots} />
       <Stats />
       <TouristsSpots touristSpots={touristSpots} />

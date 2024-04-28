@@ -1,8 +1,10 @@
 import { useContext, useState } from "react"
-import { List } from "react-bootstrap-icons"
 import { Link, NavLink } from "react-router-dom"
-import { AuthContext } from "../context/AuthProvider"
 import { toast } from "react-toastify"
+import { Tooltip } from 'react-tooltip'
+import { List } from "react-bootstrap-icons"
+// context
+import { AuthContext } from "../context/AuthProvider"
 
 const navLinks = [
   {id: 1, text: 'Home', path: '/'},
@@ -31,10 +33,14 @@ export default function Navbar() {
         <div className="flex items-center justify-end md:order-1 gap-4">
           {user ? 
             <div className="flex gap-3 items-center">
-              <figure className="w-8 p-0.5 border rounded-full border-purple-500">
-                <img src={user.photoURL} alt="" title={user.displayName} className="w-full rounded-full shadow-md" />
+              <figure className="w-9 p-0.5 border rounded-full border-purple-500" data-tooltip-id="profile-photo">
+                <img src={user.photoURL} alt="" className="w-full rounded-full shadow-md" />
               </figure>
-              <button className="px-3 py-1 rounded-md text-white bg-red-800 hover:opacity-90" onClick={handleLogout}>Logout</button>
+              {/* tooltip */}
+              <Tooltip id="profile-photo" clickable className="z-50">
+                <p className="mb-2 text-center text-lg">{user.displayName}</p>
+                <button className="px-3 py-1 rounded-md text-white bg-red-800 hover:opacity-90" onClick={handleLogout}>Logout</button>
+              </Tooltip>
             </div> 
           : 
             <div className="flex gap-3">
@@ -43,17 +49,17 @@ export default function Navbar() {
             </div>
           }
 
-          {user && <button className="md:hidden border p-0.5 text-2xl hover:scale-95" onClick={() => setShowLinks(!showLinks)}> <List/> </button>}
+          <button className="md:hidden border p-0.5 text-2xl hover:scale-95" onClick={() => setShowLinks(!showLinks)}> <List/> </button>
         </div>
 
         {/* links */}
-        {user && 
+        { 
           <ul className={`${showLinks ? 'block': 'hidden'} md:flex justify-center col-span-2 md:col-span-1`}>
             {navLinks.map(link => (
               <li key={link.id}>
                 <NavLink to={link.path} className={({isActive}) => 
                   `block px-4 py-2 rounded-md md:bg-transparent hover:underline hover:bg-purple-100  
-                  ${isActive ? 'text-purple-600 bg-purple-100 font-bold underline' : ''}`
+                  ${isActive ? 'text-purple-600 bg-purple-100 font-bold underline' : ''}` 
                 }>{link.text}</NavLink>
               </li>
             ))}
