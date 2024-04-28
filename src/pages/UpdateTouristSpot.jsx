@@ -73,7 +73,7 @@ function UpdateTouristSpot() {
           </div>
 
           <div className="mt-6">
-            <button type="submit" className="bg-purple-600 text-white w-full px-4 py-2 rounded-md hover:opacity-90">Add</button>
+            <button type="submit" className="bg-purple-600 text-white w-full px-4 py-2 rounded-md hover:opacity-90">Update</button>
           </div>
         </form>
       </div>

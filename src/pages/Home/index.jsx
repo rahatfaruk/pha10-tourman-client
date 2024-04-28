@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../comps/Loading';
 import Banner from "./Banner";
 import TouristsSpots from './TouristsSpots';
+import Countries from './Countries';
 
 function Home() {
   const touristSpots = useLoaderData()
@@ -21,6 +22,7 @@ function Home() {
       </Helmet>
       <Banner touristSpots={touristSpots} />
       <TouristsSpots touristSpots={touristSpots} />
+      <Countries />
     </div>
   );
 }
