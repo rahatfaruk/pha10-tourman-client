@@ -2,7 +2,7 @@ import { Envelope, Facebook, Instagram, Telephone, Twitter } from "react-bootstr
 
 function Footer() {
   return (  
-    <footer className=" bg-gray-200 border-t px-4">
+    <footer className="bg-gray-200 border-t border-purple-200 px-4">
       <div className="max-w-md text-center py-6 mx-auto">
         <h2 className="mb-4 text-3xl md:text-4xl text-center font-semibold text-purple-600">TourMan</h2>
         <p className="text-gray-700 mb-4">Tour is peaceful and works as mind freshner for everyone! Stay connected with us to know more tour places!</p>

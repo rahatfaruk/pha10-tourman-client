@@ -23,9 +23,9 @@ function Banner({touristSpots}) {
                 <figure>
                   <img src={spot.image} alt="" className='w-full h-96 md:h-[600px]  object-cover rounded-lg' /> 
                 </figure>
-                <div className='absolute bottom-4 left-4 space-y-1 rounded-md text-white p-4 bg-[rgba(0,0,0,.5)]'>
-                  <h3 className='text-xl md:text-2xl'>{spot.touristsSpotName}</h3>
-                  <p className="text-sm">{spot.countryName}</p>
+                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 space-y-1 rounded-md text-center text-white py-4 px-8 md:px-12 bg-[rgba(0,0,0,.6)]'>
+                  <h3 className='text-5xl md:text-7xl mb-3'>{spot.touristsSpotName}</h3>
+                  <p className="text-xl">{spot.countryName}</p>
                 </div>
               </div>
             </SwiperSlide>

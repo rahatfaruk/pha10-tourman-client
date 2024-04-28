@@ -6,6 +6,7 @@ import Loading from '../../comps/Loading';
 import Banner from "./Banner";
 import TouristsSpots from './TouristsSpots';
 import Countries from './Countries';
+import TourGuide from './TourGuide';
 
 function Home() {
   const touristSpots = useLoaderData()
@@ -22,6 +23,7 @@ function Home() {
       </Helmet>
       <Banner touristSpots={touristSpots} />
       <TouristsSpots touristSpots={touristSpots} />
+      <TourGuide />
       <Countries />
     </div>
   );
