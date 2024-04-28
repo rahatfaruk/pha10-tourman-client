@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Table({spots}) {
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -19,8 +21,8 @@ function Table({spots}) {
               <td class="px-6 py-4">{spot.averageCost} USD</td>
               <td class="px-6 py-4">{spot.seasonality} </td>
               <td class="px-6 py-4 space-x-6">
-                <button type="submit" className="bg-purple-600 text-white px-4 py-1 rounded-md hover:opacity-90">Update</button>
-                <button type="submit" className="bg-purple-600 text-white px-4 py-1 rounded-md hover:opacity-90">Delete</button>
+                <Link to={`/update-tourist-spot/${spot._id}`} className="bg-purple-600 text-white px-4 py-1 rounded-md hover:opacity-90">Update</Link>
+                <button className="bg-purple-600 text-white px-4 py-1 rounded-md hover:opacity-90">Delete</button>
               </td>
             </tr>
           ))}
