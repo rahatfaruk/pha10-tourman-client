@@ -7,6 +7,7 @@ import Banner from "./Banner";
 import TouristsSpots from './TouristsSpots';
 import Countries from './Countries';
 import TourGuide from './TourGuide';
+import Stats from './Stats';
 
 function Home() {
   const touristSpots = useLoaderData()
@@ -22,6 +23,7 @@ function Home() {
         <title>TourMan | Home</title>
       </Helmet>
       <Banner touristSpots={touristSpots} />
+      <Stats />
       <TouristsSpots touristSpots={touristSpots} />
       <TourGuide />
       <Countries />
