@@ -13,9 +13,9 @@ import Signup from './pages/Signup'
 import Home from './pages/Home'
 import AddTouristsSpot from './pages/AddTouristsSpot.jsx'
 import RouteGuard from './comps/RouteGuard.jsx'
-import SpotDetails from './pages/SpotDetails/index.jsx'
-import AllTouristsSpot from './pages/AllTouristsSpot/index.jsx'
-import MyList from './pages/MyList/index.jsx'
+import SpotDetails from './pages/SpotDetails'
+import AllTouristsSpot from './pages/AllTouristsSpot'
+import MyList from './pages/MyList'
 import UpdateTouristSpot from './pages/UpdateTouristSpot.jsx'
 import CountryTouristSpots from './pages/CountryTouristSpots.jsx'
 
@@ -53,7 +53,7 @@ const router = createBrowserRouter(
       />
       <Route 
         path='update-tourist-spot/:id'
-        element={ <UpdateTouristSpot/> }
+        element={ <RouteGuard> <UpdateTouristSpot/> </RouteGuard> }
       />
       <Route 
         path='tourist-spots/:countryName'
