@@ -14,6 +14,7 @@ import Home from './pages/Home'
 import AddTouristsSpot from './pages/AddTouristsSpot.jsx'
 import RouteGuard from './comps/RouteGuard.jsx'
 import SpotDetails from './pages/SpotDetails/index.jsx'
+import AllTouristsSpot from './pages/AllTouristsSpot/index.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,11 @@ const router = createBrowserRouter(
       <Route 
         path='add-tourists-spot'
         element={ <RouteGuard> <AddTouristsSpot/> </RouteGuard> }
+      />
+      <Route 
+        path='all-tourists-spot'
+        element={ <RouteGuard> <AllTouristsSpot/> </RouteGuard> }
+        loader={() => fetch('/touristSpots.json')} 
       />
       <Route 
         path='spot-details/:id'
