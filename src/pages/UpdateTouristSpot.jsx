@@ -1,22 +1,64 @@
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { toast } from "react-toastify"
+
 function UpdateTouristSpot() {
+  const [countries, setCountries] = useState([])
+  const [spot, setSpot] = useState({})
+  const {id} = useParams()
+
+  const { image, touristsSpotName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear } = spot
+  console.log(spot);
+
   const handleUpdateTouristsSpot = e => {
     e.preventDefault() 
     const form = e.target
     const image = form.image.value
-    const spot = form.spot.value
-    const country = form.country.value
+    const touristsSpotName = form.spot.value
+    const countryName = form.country.value
     const location = form.location.value
-    const description = form.description.value
-    const cost = form.cost.value
+    const shortDescription = form.description.value
+    const averageCost = +form.cost.value
     const seasonality = form.seasonality.value
-    const time = form.time.value
-    const visitors = form.visitors.value 
+    const travelTime = form.time.value
+    const totalVisitorsPerYear = +form.visitors.value
 
-    const newSpot = { image, touristsSpotName:spot, countryName:country, location, shortDescription:description, averageCost:cost, seasonality, travelTime:time, totalVisitorsPerYear:visitors }
+    const newSpot = { image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear }
 
-    // >> Todo: post to DB
-    console.log(newSpot);
+    // send update request to DB
+    fetch(`http://localhost:5000/update-spot/${id}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify( newSpot )
+    })
+    .then(res => res.json())
+    .then(data => {
+      toast.success('Spot Updated Successfully!')
+    })
+    .catch(err => {
+      toast.error('Spot Update Failed!')
+      console.log(err.message);
+    })
   }
+
+  // get spot details
+  useEffect(() => {
+    fetch(`http://localhost:5000/spot-details/${id}`)
+    .then(res => res.json())
+    .then(data => setSpot(data))
+    .catch(error => console.log(error.message))
+  }, [])
+
+  // get countries from db
+  useEffect(() => {
+    fetch('http://localhost:5000/home-spots')
+    .then(res => res.json())
+    .then(data => {
+      // make countris array from data
+      setCountries( data.map(item => item.countryName) )
+    })
+    .catch(err => console.log(err))
+  }, [])
 
   return (
     <section className="px-4">
@@ -26,49 +68,50 @@ function UpdateTouristSpot() {
         <form onSubmit={handleUpdateTouristsSpot}>
           <label className="block mb-4">
             <span className="block mb-1 text-sm text-gray-600">Image url</span>
-            <input type="text" name="image" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="https://image.jpg" />
+            <input type="text" name="image" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="https://image.jpg" defaultValue={image} />
           </label>
           <div className="md:grid grid-cols-2 gap-8">
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Spot name</span>
-              <input type="text" name="spot" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Sundarban" />
+              <input type="text" name="spot" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Sundarban" defaultValue={touristsSpotName} />
             </label>
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Country name</span>
               <select name="country" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" defaultValue={'thailand'}>
-                <option value="bangladesh">Bangladesh</option>
-                <option value="thailand">Thailand</option>
+                {countries.map(country => 
+                  <option value={country} key={country}>{country}</option>)
+                }
               </select>
             </label>
           </div>
           <div className="md:grid grid-cols-2 gap-8">
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Location</span>
-              <input type="text" name="location" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Suthern Bangladesh" />
+              <input type="text" name="location" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Southern Bangladesh" defaultValue={location} />
             </label>
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Short description</span>
-              <input type="text" name="description" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="This place is very nice..." />
+              <input type="text" name="description" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="This place is very nice..." defaultValue={shortDescription} />
             </label>
           </div>
           <div className="md:grid grid-cols-2 gap-8">
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Average cost (usd)</span>
-              <input type="text" name="cost" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="500" />
+              <input type="text" name="cost" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="500" defaultValue={averageCost} />
             </label>
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Seasonality</span>
-              <input type="text" name="seasonality" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="e.g. summer, winter" />
+              <input type="text" name="seasonality" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="e.g. summer, winter" defaultValue={seasonality} />
             </label>
           </div>
           <div className="md:grid grid-cols-2 gap-8">
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Travel time</span>
-              <input type="text" name="time" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="7 days" />
+              <input type="text" name="time" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="7 days" defaultValue={travelTime} />
             </label>
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Total Visitors (Per Year)</span>
-              <input type="text" name="visitors" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="1000" />
+              <input type="text" name="visitors" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="1000" defaultValue={totalVisitorsPerYear} />
             </label>
           </div>
 
