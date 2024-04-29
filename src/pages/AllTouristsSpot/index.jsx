@@ -8,7 +8,6 @@ function AllTouristsSpot() {
 
   const handleSortSpots = e => {
     const sortBy = e.target.value
-    console.log(sortBy);
 
     const newSortedSpots = [...spots].sort((spotA, spotB) => {
       // ascending

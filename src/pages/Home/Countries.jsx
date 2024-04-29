@@ -5,7 +5,7 @@ function Countries() {
   const [countries, setCountries] = useState([])
 
   useEffect(() => {
-    fetch('/countries.json')
+    fetch('http://localhost:5000/countries')
     .then(res => res.json())
     .then(data => setCountries(data))
     .catch(err => console.log(err.message))

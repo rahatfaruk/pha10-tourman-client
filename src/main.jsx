@@ -31,7 +31,6 @@ const router = createBrowserRouter(
       <Route 
         index 
         element={<Home/>} 
-        loader={() => fetch('/touristSpots.json')} 
       />
       <Route 
         path='add-tourists-spot'

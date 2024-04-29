@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import {useLoaderData} from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../comps/Loading';
 import Banner from "./Banner";
@@ -9,15 +8,14 @@ import TourGuide from './TourGuide';
 import Stats from './Stats';
 
 function Home() {
-  const touristSpots = useLoaderData()
-  // const [touristSpots, setTouristSpots] = useState([])
+  const [touristSpots, setTouristSpots] = useState([])
   console.log(touristSpots);
   const {loading} = useContext(AuthContext)
 
   useEffect(() => {
     fetch('http://localhost:5000/home-spots')
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => setTouristSpots(data))
     .catch(err => console.log(err))
   }, [])
 
