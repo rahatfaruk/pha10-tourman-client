@@ -1,8 +1,18 @@
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 import Table from "./Table";
 
 function MyList() {
-  const spots = useLoaderData()
+  const {user} = useContext( AuthContext )
+  const [spots, setSpots] = useState([])
+
+  // get my spots
+  useEffect(() => {
+    fetch(`http://localhost:5000/my-spots/${user.email}`)
+    .then(res => res.json())
+    .then(data => setSpots(data))
+    .catch(err => console.log(err.message))
+  }, [])
 
   return (
     <section className="px-4">
@@ -12,7 +22,7 @@ function MyList() {
         </header>
 
         <div className="text-center mb-4">
-          <p className="text-lg font-semibold">Ali | user@mail.com</p>
+          <p className="text-lg font-semibold">{user.displayName} | {user.email}</p>
         </div>
 
         <Table spots={spots} />
