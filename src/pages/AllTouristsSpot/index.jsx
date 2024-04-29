@@ -1,10 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import TouristsSpotsGrid from "../../comps/TouristsSpotsGrid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AllTouristsSpot() {
-  const data = useLoaderData()
-  const [spots, setSpots] = useState(data)
+  const [spots, setSpots] = useState([])
 
   const handleSortSpots = e => {
     const sortBy = e.target.value
@@ -22,6 +21,16 @@ function AllTouristsSpot() {
 
     setSpots(newSortedSpots)
   }
+
+  // get all tourists from db
+  useEffect(() => {
+    fetch('http://localhost:5000/all-tourists-spot')
+    .then(res => res.json())
+    .then(data => {
+      setSpots( data )
+    })
+    .catch(err => console.log(err))
+  }, [])
 
   return (  
     <section className="px-4">
