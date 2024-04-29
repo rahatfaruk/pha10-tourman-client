@@ -19,7 +19,7 @@ export default TouristsSpots;
 
 
 function Spot({spot}) {
-    const { _id, image, touristsSpotName, countryName, userName, userEmail, averageCost, travelTime } = spot
+    const { _id, image, touristsSpotName, countryName, userName, averageCost, travelTime } = spot
   return (  
     <div className="border shadow-md rounded-md animate__animated animate__fadeIn">
       <figure className="relative p-2 pb-3">

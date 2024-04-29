@@ -44,7 +44,6 @@ const router = createBrowserRouter(
       <Route 
         path='my-list'
         element={ <RouteGuard> <MyList/> </RouteGuard> }
-        loader={() => fetch('/touristSpots.json')} 
       />
       <Route 
         path='spot-details/:id'
@@ -55,9 +54,8 @@ const router = createBrowserRouter(
         element={ <RouteGuard> <UpdateTouristSpot/> </RouteGuard> }
       />
       <Route 
-        path='tourist-spots/:countryName'
+        path='country-spots/:countryName'
         element={ <CountryTouristSpots/> }
-        loader={() => fetch('/touristSpots.json')} 
       />
     </Route>
   )

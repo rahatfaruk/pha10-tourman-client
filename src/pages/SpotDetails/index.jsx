@@ -21,9 +21,9 @@ function SpotDetails() {
     <section className="px-4">
       <div className="max-w-screen-xl mx-auto pt-6 pb-12">
         <header className="mb-6 text-center font-semibold bg-purple-200 text-purple-800 p-4 rounded-md">
-          <h1 className="text-3xl md:text-4xl mb-2">Spot Details</h1>
+          <h1 className="text-3xl md:text-4xl">Spot Details</h1>
         </header>
-        <p className="text-sm mb-2 text-gray-500">ID: {_id} </p>
+        <p className="text-sm md:text-lg mb-2 text-gray-500">ID: {_id} </p>
         <figure className="mb-6">
           <img src={image} alt="" className='w-full h-96 md:h-[600px]  object-cover rounded-lg object-bottom' />
         </figure>

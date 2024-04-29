@@ -1,9 +1,17 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import TouristsSpotsGrid from "../comps/TouristsSpotsGrid";
+import { useEffect, useState } from "react";
 
 function CountryTouristSpots() {
-  const spots = useLoaderData()
+  const [spots, setSpots] = useState([])
   const {countryName} = useParams()
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/country-spots/${countryName}`)
+    .then(res => res.json())
+    .then(data => setSpots(data))
+    .catch(error => console.log(error.message))
+  }, [])
 
   return (  
     <section className="px-4">
