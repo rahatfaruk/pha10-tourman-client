@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Clock, Clouds, CurrencyDollar, GeoAlt, People } from "react-bootstrap-icons";
+import { useParams } from "react-router-dom";
 
 function SpotDetails() {
   const [spot, setSpot] = useState({})
+  const {id} = useParams()
   
   const { _id, image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, userName, userEmail } = spot
   
   const statsArr = [[averageCost, 'Average Cost', <CurrencyDollar/>] , [seasonality, 'Seasonality', <Clouds/>], [travelTime, 'Travel Time',  <Clock/>], [totalVisitorsPerYear, 'Total Visitors Per Year', <People/>]] 
 
   useEffect(() => {
-    fetch('/touristSpots.json')
+    fetch(`http://localhost:5000/spot-details/${id}`)
     .then(res => res.json())
-    .then(data => setSpot(data[0]))
+    .then(data => setSpot(data))
     .catch(error => console.log(error.message))
   }, [])
 
@@ -20,8 +22,8 @@ function SpotDetails() {
       <div className="max-w-screen-xl mx-auto pt-6 pb-12">
         <header className="mb-6 text-center font-semibold bg-purple-200 text-purple-800 p-4 rounded-md">
           <h1 className="text-3xl md:text-4xl mb-2">Spot Details</h1>
-          <p className="text-sm">ID: {_id} </p>
         </header>
+        <p className="text-sm mb-2 text-gray-500">ID: {_id} </p>
         <figure className="mb-6">
           <img src={image} alt="" className='w-full h-96 md:h-[600px]  object-cover rounded-lg object-bottom' />
         </figure>
