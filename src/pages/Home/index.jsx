@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {useLoaderData} from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../comps/Loading';
@@ -10,8 +10,16 @@ import Stats from './Stats';
 
 function Home() {
   const touristSpots = useLoaderData()
+  // const [touristSpots, setTouristSpots] = useState([])
   console.log(touristSpots);
   const {loading} = useContext(AuthContext)
+
+  useEffect(() => {
+    fetch('http://localhost:5000/home-spots')
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  }, [])
 
   if (loading) {
     return <Loading />

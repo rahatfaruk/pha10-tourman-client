@@ -1,24 +1,52 @@
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../context/AuthProvider"
+import { toast } from "react-toastify";
+
 function AddTouristsSpot() {
+  const [countries, setCountries] = useState([])
+  const {user} = useContext(AuthContext)
+
+  // add new spot
   const handleAddTouristsSpot = e => {
     e.preventDefault() 
     const form = e.target
     const image = form.image.value
-    const spot = form.spot.value
-    const country = form.country.value
+    const touristsSpotName = form.spot.value
+    const countryName = form.country.value
     const location = form.location.value
-    const description = form.description.value
-    const cost = form.cost.value
+    const shortDescription = form.description.value
+    const averageCost = +form.cost.value
     const seasonality = form.seasonality.value
-    const time = form.time.value
-    const visitors = form.visitors.value
-    const email = form.email.value
-    const username = form.username.value
+    const travelTime = form.time.value
+    const totalVisitorsPerYear = +form.visitors.value
+    const userEmail = form.email.value
+    const userName = form.username.value
 
-    const newSpot = { image, touristsSpotName:spot, countryName:country, location, shortDescription:description, averageCost:cost, seasonality, travelTime:time, totalVisitorsPerYear:visitors, userEmail:email, userName:username }
+    const newSpot = { image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, userEmail, userName }
 
-    // >> Todo: post to DB
-    console.log(newSpot);
+    // post newSpot to DB
+    fetch('http://localhost:5000/add-spot', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify( newSpot ) 
+    })
+    .then(res => res.json())
+    .then(data => {
+      toast.success('Tourist spot added successfully!')
+      form.reset()
+    })
   }
+
+  // get countries from db
+  useEffect(() => {
+    fetch('http://localhost:5000/home-spots')
+    .then(res => res.json())
+    .then(data => {
+      // make countris array from data
+      setCountries( data.map(item => item.countryName) )
+    })
+    .catch(err => console.log(err))
+  }, [])
 
   return (
     <section className="px-4">
@@ -38,8 +66,9 @@ function AddTouristsSpot() {
             <label className="block mb-4">
               <span className="block mb-1 text-sm text-gray-600">Country name</span>
               <select name="country" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" defaultValue={'thailand'}>
-                <option value="bangladesh">Bangladesh</option>
-                <option value="thailand">Thailand</option>
+                {countries.map(country => 
+                  <option value={country} key={country}>{country}</option>)
+                }
               </select>
             </label>
           </div>
@@ -75,12 +104,12 @@ function AddTouristsSpot() {
           </div>
           <div className="md:grid grid-cols-2 gap-8">
             <label className="block mb-4">
-              <span className="block mb-1 text-sm text-gray-600">Your email</span>
-              <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="example@mail.com" />
+              <span className="block mb-1 text-sm text-gray-600">Your Name</span>
+              <input type="text" name="username" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Nur Islam" defaultValue={user.displayName} disabled />
             </label>
             <label className="block mb-4">
-              <span className="block mb-1 text-sm text-gray-600">Your Name</span>
-              <input type="text" name="username" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Nur Islam" />
+              <span className="block mb-1 text-sm text-gray-600">Your email</span>
+              <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="example@mail.com" defaultValue={user.email} disabled />
             </label>
           </div>
 
