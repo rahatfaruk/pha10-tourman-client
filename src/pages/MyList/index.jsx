@@ -25,7 +25,7 @@ function MyList() {
           <p className="text-lg font-semibold">{user.displayName} | {user.email}</p>
         </div>
 
-        <Table spots={spots} />
+        <Table spots={spots} setSpots={setSpots} />
       </div>
     </section>
   );
