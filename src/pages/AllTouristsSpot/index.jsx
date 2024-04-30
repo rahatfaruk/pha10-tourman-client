@@ -24,7 +24,7 @@ function AllTouristsSpot() {
 
   // get all tourists from db
   useEffect(() => {
-    fetch('http://localhost:5000/all-tourists-spot')
+    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/all-tourists-spot')
     .then(res => res.json())
     .then(data => {
       setSpots( data )

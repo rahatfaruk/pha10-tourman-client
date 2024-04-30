@@ -9,7 +9,7 @@ function MyList() {
 
   // get my spots
   useEffect(() => {
-    fetch(`http://localhost:5000/my-spots/${user.email}`)
+    fetch(`https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/my-spots/${user.email}`)
     .then(res => res.json())
     .then(data => setSpots(data))
     .catch(err => console.log(err.message))

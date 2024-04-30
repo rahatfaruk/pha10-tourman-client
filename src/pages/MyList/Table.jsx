@@ -17,7 +17,7 @@ function Table({spots, setSpots}) {
     }).then((result) => {
       if (result.isConfirmed) {
         // send delete request 
-        fetch(`http://localhost:5000/my-spot/${id}`, { method: 'DELETE' })
+        fetch(`https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/my-spot/${id}`, { method: 'DELETE' })
         .then(res => res.json())
         .then(data => {
           // update UI
