@@ -8,7 +8,7 @@ import MyTypewriter from '../../comps/MyTypewriter';
 
 function Banner({touristSpots}) {
   return (  
-    <section className="px-4">
+    <section className="px-4 dark:bg-gray-800">
       <div className="max-w-screen-xl py-6 mx-auto animate__animated animate__fadeIn">
         <Swiper
           spaceBetween={50}
@@ -26,7 +26,8 @@ function Banner({touristSpots}) {
                 </figure>
                 <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 space-y-1 rounded-md text-center text-white py-4 px-8 md:px-12 bg-[rgba(0,0,0,.6)]'>
                   <h3 className='text-3xl md:text-7xl mb-3 leading-tight'>
-                    <MyTypewriter words={['Welcome To', 'Visit']} color={'text-purple-400'} /> <br/>
+                    <span className='text-2xl md:text-5xl'><MyTypewriter words={['Welcome To', 'Visit']} color={'text-purple-400'} /></span>
+                    <br/>
                     {spot.touristsSpotName}
                   </h3>
                 </div>

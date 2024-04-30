@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { toast } from "react-toastify"
 import { Tooltip } from 'react-tooltip'
-import { List, MoonFill, MoonStarsFill, SunFill } from "react-bootstrap-icons"
+import { List, MoonStarsFill, SunFill } from "react-bootstrap-icons"
 // context
 import { AuthContext } from "../context/AuthProvider"
 import { ThemeContext } from "../context/ThemeProvider"

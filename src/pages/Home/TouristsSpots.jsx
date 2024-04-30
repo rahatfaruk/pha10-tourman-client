@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function TouristsSpots({touristSpots}) {
   
   return (  
-    <section className="px-4">
+    <section className="px-4 dark:bg-gray-800 dark:text-white">
       <div className="max-w-screen-xl mx-auto py-8">
         <h2 className="mb-4 md:mb-6 text-3xl md:text-4xl text-center font-semibold">Tourists Spots</h2>
 
@@ -28,9 +28,9 @@ function Spot({spot}) {
       <div className="px-4 pb-6">
         <h3 className="text-xl font-semibold mb-1">{touristsSpotName}</h3>
         <p className='flex items-center gap-2 mb-1'><GeoAlt /> {countryName}</p>
-        <p className='text-gray-600 text-sm mb-1'>Cost: {averageCost}</p>
-        <p className='text-gray-600 text-sm mb-1'>Time: {travelTime}</p>
-        <p className='text-gray-600 text-sm mb-1'>Added by <span className='font-bold'>{userName}</span></p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Cost: {averageCost}</p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Time: {travelTime}</p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Added by <span className='font-bold'>{userName}</span></p>
         <Link to={`/spot-details/${_id}`} className="inline-block px-3 py-1 mt-3 rounded-md text-white bg-purple-600 hover:opacity-90">View Details</Link>
       </div>
     </div>
