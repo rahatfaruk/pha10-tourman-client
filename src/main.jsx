@@ -5,6 +5,7 @@ import './index.css'
 import 'animate.css'
 // context
 import AuthProvider from './context/AuthProvider'
+import ThemeProvider from './context/ThemeProvider.jsx'
 // comps & pages
 import RouteGuard from './comps/RouteGuard.jsx'
 import App from './App.jsx'
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route 
       path='/' 
-      element={<AuthProvider> <App/> </AuthProvider>} 
+      element={<AuthProvider> <ThemeProvider> <App/> </ThemeProvider> </AuthProvider>} 
       errorElement={<ErrorPage /> }
     >
       <Route path='signin' element={<Signin/>} />
