@@ -60,18 +60,18 @@ function Signin() {
     return <Navigate to={state ? state : '/'} />
   }
   return (  
-    <section className="px-4 md:px-6 py-8">
+    <section className="px-4 md:px-6 py-8 dark:bg-gray-800 dark:text-gray-200">
       <div className="max-w-md mx-auto p-4 border rounded-md shadow-md animate__animated animate__fadeIn">
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6 animate__animated animate__shakeX">Sign in</h2>
 
         <form onSubmit={handleSubmit}>
           <label className="block mb-4">
-            <span className="block mb-1 text-sm text-gray-600">Your email</span>
-            <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="example@mail.com" />
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your email</span>
+            <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" placeholder="example@mail.com" />
           </label>
           <label className="block mb-4 relative">
-            <span className="block mb-1 text-sm text-gray-600">Your password</span>
-            <input type={showPassword ? "text" : "password"} name="password" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" />
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your password</span>
+            <input type={showPassword ? "text" : "password"} name="password" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute bottom-1.5 right-1.5 p-1 text-xl">
               {showPassword ? <Eye/> : <EyeSlash/>}
             </button>
@@ -85,10 +85,10 @@ function Signin() {
         {/* other login method */}
         <div className="border-t pt-4 mt-6 space-y-4">
           <button onClick={handleSignInWithGoogle} className="bg-blue-600 text-white w-full px-4 py-2 rounded-md flex items-center justify-center gap-3 hover:opacity-90"><Google/> Continue with Google</button>
-          <button onClick={handleSignInWithGithub} className="bg-gray-800 text-white w-full px-4 py-2 rounded-md flex items-center justify-center gap-3 hover:opacity-90"><Github/> Continue with Github</button>
+          <button onClick={handleSignInWithGithub} className="bg-gray-800 text-white w-full px-4 py-2 rounded-md flex items-center justify-center gap-3 hover:opacity-90 dark:border"><Github/> Continue with Github</button>
         </div>
 
-        <p className="mt-4">Don't have an account? <Link to="/signup" className="text-purple-600 hover:underline">Sign up</Link></p>
+        <p className="mt-4">Don't have an account? <Link to="/signup" className="text-purple-600 hover:underline dark:text-purple-400">Sign up</Link></p>
       </div>
     </section>
   );

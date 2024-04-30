@@ -11,7 +11,10 @@ function Stats() {
   return (  
     <section className="px-4 bg-gray-200 dark:bg-gray-700">
       <div className="max-w-screen-xl mx-auto py-8">
-      <h2 className="mb-4 md:mb-8 text-3xl md:text-4xl text-center font-semibold dark:text-white">Stats</h2>
+        <div className="mb-4 md:mb-8 max-w-md mx-auto text-center">
+          <h2 className="mb-3 text-3xl md:text-4xl text-center font-semibold dark:text-white">Stats</h2>
+          <p className="md:text-lg dark:text-gray-400">Discover who's exploring & what's trending. Explore our visitor stats! Get inspired for your next adventure!</p>
+        </div>
 
         <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-12">
           {statsArr.map((stat) => (

@@ -45,27 +45,27 @@ function Signup() {
     return <Navigate to={'/'} />
   }
   return (  
-    <section className="px-4 md:px-6 py-8">
+    <section className="px-4 md:px-6 py-8 dark:bg-gray-800 dark:text-gray-200">
       <div className="max-w-md mx-auto p-4 border rounded-md shadow-md animate__animated animate__fadeIn">
         <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6 animate__animated animate__bounceIn">Create New Account</h2>
 
         <form onSubmit={handleSubmit}>
           <label className="block mb-4">
-            <span className="block mb-1 text-sm text-gray-600">Your Name</span>
-            <input type="text" name="name" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="Ali Khan" />
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your Name</span>
+            <input type="text" name="name" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" placeholder="Ali Khan" />
           </label>
           <label className="block mb-4">
-            <span className="block mb-1 text-sm text-gray-600">Your Photo url</span>
-            <input type="text" name="photo" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="https://example.com" />
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your Photo url</span>
+            <input type="text" name="photo" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" placeholder="https://example.com" />
           </label>
           <label className="block mb-4">
-            <span className="block mb-1 text-sm text-gray-600">Your email</span>
-            <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" placeholder="example@mail.com" />
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your email</span>
+            <input type="email" name="email" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" placeholder="example@mail.com" />
           </label>
           <label className="block mb-4 relative">
-            <span className="block mb-1 text-sm text-gray-600">Your password</span>
-            <input type={showPassword ? "text" : "password"} name="password" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50" />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute bottom-1.5 right-1.5 border. p-1 text-xl">
+            <span className="block mb-1 text-sm text-gray-600 dark:text-gray-400">Your password</span>
+            <input type={showPassword ? "text" : "password"} name="password" className="border w-full min-w-0 px-3 py-2 rounded-md bg-gray-50 dark:text-gray-700" />
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute bottom-1.5 right-1.5 border. p-1 text-xl dark:text-gray-800">
               {showPassword ? <Eye/> : <EyeSlash/>}
             </button>
           </label>
@@ -75,7 +75,7 @@ function Signup() {
           </div>
         </form>
 
-        <p className="mt-4">Already have an account? <Link to="/signin" className="text-purple-600 hover:underline">Sign in</Link></p>
+        <p className="mt-4">Already have an account? <Link to="/signin" className="text-purple-600 hover:underline dark:text-purple-400">Sign in</Link></p>
       </div>
     </section>
   );
