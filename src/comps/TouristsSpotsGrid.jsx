@@ -20,10 +20,10 @@ function Spot({ spot }) {
       </figure>
       <div className="px-4 pb-6 md:py-3 md:pl-8 md:self-center">
         <h3 className="text-xl font-semibold mb-1">{touristsSpotName}</h3>
-        <p className='text-gray-600 text-sm mb-1'>Average Cost: <span className="font-semibold">{averageCost} USD</span></p>
-        <p className='text-gray-600 text-sm mb-1'>Total Visitors (per year): <span className="font-semibold">{totalVisitorsPerYear}</span></p>
-        <p className='text-gray-600 text-sm mb-1'>Travel Time: <span className="font-semibold">{travelTime}</span></p>
-        <p className='text-gray-600 text-sm mb-1'>Seasonality: <span className="font-semibold">{seasonality}</span></p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Average Cost: <span className="font-semibold">{averageCost} USD</span></p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Total Visitors (per year): <span className="font-semibold">{totalVisitorsPerYear}</span></p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Travel Time: <span className="font-semibold">{travelTime}</span></p>
+        <p className='text-gray-600 text-sm mb-1 dark:text-gray-400'>Seasonality: <span className="font-semibold">{seasonality}</span></p>
         <Link to={`/spot-details/${_id}`} className="inline-block px-3 py-1 mt-3 rounded-md text-white bg-purple-600 hover:opacity-90">View Details</Link>
       </div>
     </div>

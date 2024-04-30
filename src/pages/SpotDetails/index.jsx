@@ -18,21 +18,21 @@ function SpotDetails() {
   }, [])
 
   return (
-    <section className="px-4">
+    <section className="px-4 dark:bg-gray-800 dark:text-gray-200">
       <div className="max-w-screen-xl mx-auto pt-6 pb-12">
         <header className="mb-6 text-center font-semibold bg-purple-200 text-purple-800 p-4 rounded-md">
           <h1 className="text-3xl md:text-4xl">Spot Details</h1>
         </header>
-        <p className="text-sm md:text-lg mb-2 text-gray-500">ID: {_id} </p>
+        <p className="text-sm md:text-lg mb-2 text-gray-500 dark:text-gray-400">ID: {_id} </p>
         <figure className="mb-6">
           <img src={image} alt="" className='w-full h-96 md:h-[600px]  object-cover rounded-lg object-bottom' />
         </figure>
         <p className='flex items-center gap-2 text-purple-600 text-lg'><GeoAlt /> {location}, {countryName}</p>
         <h2 className="mb-2 text-3xl md:text-4xl font-semibold">{touristsSpotName}</h2>
-        <p className='text-gray-600 text-sm mb-6'>Added by <span className='font-bold'>{userName}</span> | {userEmail}</p>
+        <p className='text-gray-600 text-sm mb-6 dark:text-gray-400'>Added by <span className='font-bold'>{userName}</span> | {userEmail}</p>
 
         <h3 className="text-2xl font-semibold mb-1">Details</h3>
-        <p className="text-lg text-gray-500 mb-4">{shortDescription}</p>
+        <p className="text-lg text-gray-500 mb-4 dark:text-gray-400">{shortDescription}</p>
         {/* Todo: stats */}
         <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {statsArr.map((stat) => (
