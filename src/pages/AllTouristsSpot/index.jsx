@@ -9,7 +9,7 @@ function AllTouristsSpot() {
   const handleSortSpots = e => {
     const sortBy = e.target.value 
 
-    fetch(`http://localhost:5000/all-tourists-spot?sortBy=${sortBy}`)
+    fetch(`https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/all-tourists-spot?sortBy=${sortBy}`)
     .then(res => res.json())
     .then(data => setSpots(data))
     .catch(err => console.log(err.message))
