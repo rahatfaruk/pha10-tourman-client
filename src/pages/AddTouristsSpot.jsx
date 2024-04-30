@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../context/AuthProvider"
 import { toast } from "react-toastify";
+import Loading from "../comps/Loading";
 
 function AddTouristsSpot() {
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState(null)
   const {user} = useContext(AuthContext)
 
   // add new spot
@@ -45,9 +46,15 @@ function AddTouristsSpot() {
       // make countris array from data
       setCountries( data.map(item => item.countryName) )
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      setCountries([])
+      console.log(err.message)
+    })
   }, [])
 
+  if (!countries) {
+    return <Loading />
+  }
   return (
     <section className="px-4 dark:bg-gray-800 dark:text-gray-200">
       <div className="max-w-screen-xl mx-auto py-6">

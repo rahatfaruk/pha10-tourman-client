@@ -1,9 +1,9 @@
-import { useLoaderData } from "react-router-dom";
 import TouristsSpotsGrid from "../../comps/TouristsSpotsGrid";
 import { useEffect, useState } from "react";
+import Loading from "../../comps/Loading";
 
 function AllTouristsSpot() {
-  const [spots, setSpots] = useState([])
+  const [spots, setSpots] = useState(null)
 
   const handleSortSpots = e => {
     const sortBy = e.target.value
@@ -29,9 +29,15 @@ function AllTouristsSpot() {
     .then(data => {
       setSpots( data )
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      setSpots([])
+      console.log(err.message)
+    })
   }, [])
 
+  if (!spots) {
+    return <Loading />
+  }
   return (  
     <section className="px-4 dark:bg-gray-800 dark:text-gray-200">
       <div className="max-w-screen-xl mx-auto py-8">

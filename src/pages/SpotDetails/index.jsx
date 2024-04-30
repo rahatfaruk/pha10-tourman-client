@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
 import { Clock, Clouds, CurrencyDollar, GeoAlt, People } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
+import Loading from "../../comps/Loading";
 
 function SpotDetails() {
-  const [spot, setSpot] = useState({})
+  const [spot, setSpot] = useState(null)
   const {id} = useParams()
-  
-  const { _id, image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, userName, userEmail } = spot
-  
-  const statsArr = [[averageCost, 'Average Cost', <CurrencyDollar/>] , [seasonality, 'Seasonality', <Clouds/>], [travelTime, 'Travel Time',  <Clock/>], [totalVisitorsPerYear, 'Total Visitors Per Year', <People/>]] 
 
   useEffect(() => {
     fetch(`http://localhost:5000/spot-details/${id}`)
     .then(res => res.json())
     .then(data => setSpot(data))
-    .catch(error => console.log(error.message))
+    .catch(err => {
+      setSpot({})
+      console.log(err.message)
+    })
   }, [])
+
+  // show loading animation
+  if (!spot) {
+    return <Loading />
+  }
+
+  const { _id, image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, userName, userEmail } = spot
+  
+  const statsArr = [[averageCost, 'Average Cost', <CurrencyDollar/>] , [seasonality, 'Seasonality', <Clouds/>], [travelTime, 'Travel Time',  <Clock/>], [totalVisitorsPerYear, 'Total Visitors Per Year', <People/>]] 
 
   return (
     <section className="px-4 dark:bg-gray-800 dark:text-gray-200">

@@ -8,18 +8,20 @@ import TourGuide from './TourGuide';
 import Stats from './Stats';
 
 function Home() {
-  const [touristSpots, setTouristSpots] = useState([])
-  console.log(touristSpots);
+  const [touristSpots, setTouristSpots] = useState(null)
   const {loading} = useContext(AuthContext)
 
   useEffect(() => {
     fetch('http://localhost:5000/home-spots')
     .then(res => res.json())
     .then(data => setTouristSpots(data))
-    .catch(err => console.log(err))
+    .catch(err => {
+      setTouristSpots([])
+      console.log(err.message)
+    })
   }, [])
 
-  if (loading) {
+  if (loading || !touristSpots) {
     return <Loading />
   }
   return (  

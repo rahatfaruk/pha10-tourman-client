@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Table from "./Table";
+import Loading from "../../comps/Loading";
 
 function MyList() {
   const {user} = useContext( AuthContext )
-  const [spots, setSpots] = useState([])
+  const [spots, setSpots] = useState(null)
 
   // get my spots
   useEffect(() => {
@@ -14,6 +15,9 @@ function MyList() {
     .catch(err => console.log(err.message))
   }, [])
 
+  if (!spots) {
+    return <Loading />
+  }
   return (
     <section className="px-4 dark:bg-gray-800 dark:text-gray-200 flex-1">
       <div className="max-w-screen-xl mx-auto py-8">
