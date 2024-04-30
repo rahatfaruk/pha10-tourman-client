@@ -49,7 +49,7 @@ function ThemeProvider({children}) {
       setIsDark(true)
     } 
     // device-media
-    else if(mmIsDark.matches) {
+    else if(!lsTheme && mmIsDark.matches) {
       document.documentElement.classList.add('dark')
       setIsDark(true)
     }

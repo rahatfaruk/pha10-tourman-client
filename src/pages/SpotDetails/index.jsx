@@ -8,7 +8,7 @@ function SpotDetails() {
   const {id} = useParams()
 
   useEffect(() => {
-    fetch(`https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/spot-details/${id}`)
+    fetch(`https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/spot-details/${id}`)
     .then(res => res.json())
     .then(data => setSpot(data))
     .catch(err => {

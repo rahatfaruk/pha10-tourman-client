@@ -12,7 +12,7 @@ function Home() {
   const {loading} = useContext(AuthContext)
 
   useEffect(() => {
-    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/home-spots')
+    fetch('https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/home-spots')
     .then(res => res.json())
     .then(data => setTouristSpots(data))
     .catch(err => {

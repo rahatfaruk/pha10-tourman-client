@@ -5,7 +5,7 @@ function Countries() {
   const [countries, setCountries] = useState([])
 
   useEffect(() => {
-    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/countries')
+    fetch('https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/countries')
     .then(res => res.json())
     .then(data => setCountries(data))
     .catch(err => console.log(err.message))

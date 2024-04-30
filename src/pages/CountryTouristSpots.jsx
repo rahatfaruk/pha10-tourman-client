@@ -8,7 +8,7 @@ function CountryTouristSpots() {
   const {countryName} = useParams()
 
   useEffect(() => {
-    fetch(`https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/country-spots/${countryName}`)
+    fetch(`https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/country-spots/${countryName}`)
     .then(res => res.json())
     .then(data => setSpots(data))
     .catch(err => {

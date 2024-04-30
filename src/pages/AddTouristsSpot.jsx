@@ -26,7 +26,7 @@ function AddTouristsSpot() {
     const newSpot = { image, touristsSpotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, userEmail, userName }
 
     // post newSpot to DB
-    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/add-spot', {
+    fetch('https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/add-spot', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify( newSpot ) 
@@ -40,7 +40,7 @@ function AddTouristsSpot() {
 
   // get countries from db
   useEffect(() => {
-    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/home-spots')
+    fetch('https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/home-spots')
     .then(res => res.json())
     .then(data => {
       // make countris array from data

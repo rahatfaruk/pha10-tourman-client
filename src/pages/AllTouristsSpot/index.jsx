@@ -5,26 +5,19 @@ import Loading from "../../comps/Loading";
 function AllTouristsSpot() {
   const [spots, setSpots] = useState(null)
 
+  // sort spots by costs on backend
   const handleSortSpots = e => {
-    const sortBy = e.target.value
+    const sortBy = e.target.value 
 
-    const newSortedSpots = [...spots].sort((spotA, spotB) => {
-      // ascending
-      if (sortBy === 'cost-asc') {
-        return spotA.averageCost - spotB.averageCost
-      }
-      // descending
-      else {
-        return spotB.averageCost - spotA.averageCost
-      }
-    })
-
-    setSpots(newSortedSpots)
+    fetch(`http://localhost:5000/all-tourists-spot?sortBy=${sortBy}`)
+    .then(res => res.json())
+    .then(data => setSpots(data))
+    .catch(err => console.log(err.message))
   }
 
   // get all tourists from db
   useEffect(() => {
-    fetch('https://pha10-tourman-jxzltace2-rahatfaruk99.vercel.app/all-tourists-spot')
+    fetch('https://pha10-tourman-3cormv8e8-rahatfaruk99.vercel.app/all-tourists-spot')
     .then(res => res.json())
     .then(data => {
       setSpots( data )
