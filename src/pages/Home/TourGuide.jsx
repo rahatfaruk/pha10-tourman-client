@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import MyTypewriter from "../../comps/MyTypewriter";
 
 function TourGuide() {
   const handleSubmit = e => {
@@ -9,7 +10,7 @@ function TourGuide() {
     <section className="px-4 bg-gray-200">
       <div className="max-w-screen-xl py-6 md:py-12 mx-auto">
         <div className="max-w-md mx-auto text-center mb-6">
-          <h2 className="mb-4 text-3xl md:text-4xl text-center font-semibold">Join Our Next Tour!</h2>
+          <h2 className="mb-4 text-3xl md:text-4xl text-center font-semibold">Join Our Next <MyTypewriter words={['Tour!', 'Memories!']} /></h2>
           <p className="text-gray-500">Experience the world anew as we embark on our next unforgettable journey. Join our tour for memories that last a lifetime!</p>
         </div>
 
@@ -34,3 +35,4 @@ function TourGuide() {
 }
 
 export default TourGuide;
+
