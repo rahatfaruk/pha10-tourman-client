@@ -30,5 +30,11 @@ Backend: expressjs, mongodb
 ## Imporant Links:
   - Phero source repo: https://github.com/ProgrammingHero1/B9--Assaignment-10 
   - My frontend repo: [pha10-tourman-client](https://github.com/rahatfaruk/pha10-tourman-client) , [phero-repo](https://github.com/programming-hero-web-course-4/B9A10-client-side-rahatfaruk) 
-  - My backend repo: https://github.com/programming-hero-web-course-4/b9a10-server-side-rahatfaruk 
+  - My backend repo: [pha10-tourman-server](https://github.com/rahatfaruk/pha10-tourman-server) , [phero-repo](https://github.com/programming-hero-web-course-4/b9a10-server-side-rahatfaruk)  
   - My live site: https://pha10-tourism-manage.web.app/ 
+
+## How can you run frontend locally:
+  - clone this repo
+  - create `.env.local` file inside root folder. Here, keys are: firebase config info (create a firebase project if needed) - ` VITE_apiKey, VITE_authDomain, VITE_projectId, VITE_storageBucket, VITE_messagingSenderId, VITE_appId `
+  - update server link into a local link (if needed)
+  - start frontend server `npm run dev`
